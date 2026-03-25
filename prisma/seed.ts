@@ -28,17 +28,17 @@ async function readCSV(fileName: string) {
 }
 
 async function main() {
-  // staff.csv
-  const staffData = await readCSV("staff.csv");
+  // people.csv
+  const peopleData = await readCSV("people.csv");
   await prisma.$transaction(async (tx) => {
-    for (const row of staffData) {
+    for (const row of peopleData) {
       const data = {
         name: row.name,
         email: row.email,
         mobile_no: row.mobile_no,
         designation: row.designation as DesignationType,
       };
-      await tx.staff.upsert({
+      await tx.people.upsert({
         where: { id: row.id },
         update: data,
         create: {
@@ -80,13 +80,13 @@ async function main() {
         type: row.type as VenueType,
         availableForBooking:
           row.available_for_booking.trim().toLowerCase() === "true",
-        lab_staff:
-          row.lab_staff && row.lab_staff.trim() !== "NULL"
-            ? { connect: { id: row.lab_staff } }
+        staffIncharge:
+          row.staff_incharge && row.staff_incharge.trim() !== "NULL"
+            ? { connect: { id: row.staff_incharge } }
             : undefined,
-        lab_incharge:
-          row.lab_incharge && row.lab_incharge.trim() !== "NULL"
-            ? { connect: { id: row.lab_incharge } }
+        facultyIncharge:
+          row.faculty_incharge && row.faculty_incharge.trim() !== "NULL"
+            ? { connect: { id: row.faculty_incharge } }
             : undefined,
       };
       await tx.venue.upsert({

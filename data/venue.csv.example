@@ -1,1 +1,1 @@
-id	name	type	available_for_booking	lab_staff	lab_incharge
+id	name	type	available_for_booking	staff_incharge	faculty_incharge

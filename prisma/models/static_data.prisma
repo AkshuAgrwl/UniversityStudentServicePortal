@@ -1,12 +1,12 @@
-model Staff {
+model People {
     id               String          @id
     name             String
     email            String          @unique
     mobile_no        String          @unique
     designation      DesignationType
     positions        Position[]      @relation("PositionPerson")
-    venuesAsStaff    Venue[]         @relation("VenueLabStaff")
-    venuesAsIncharge Venue[]         @relation("VenueLabIncharge")
+    venuesAsStaff    Venue[]         @relation("VenueStaffIncharge")
+    venuesAsIncharge Venue[]         @relation("VenueFacultyIncharge")
 }
 
 model Position {
@@ -14,7 +14,7 @@ model Position {
     role  String
     email String @unique
 
-    person_in_position Staff  @relation("PositionPerson", fields: [personInPositionId], references: [id])
+    person_in_position People @relation("PositionPerson", fields: [personInPositionId], references: [id])
     personInPositionId String
 }
 
@@ -24,11 +24,11 @@ model Venue {
     type                VenueType
     availableForBooking Boolean   @default(true)
 
-    labStaffId    String?
-    labInchargeId String?
+    staffInchargeId String?
+    staffIncharge   People? @relation(name: "VenueStaffIncharge", fields: [staffInchargeId], references: [id])
 
-    lab_staff    Staff? @relation(name: "VenueLabStaff", fields: [labStaffId], references: [id])
-    lab_incharge Staff? @relation(name: "VenueLabIncharge", fields: [labInchargeId], references: [id])
+    facultyInchargeId String?
+    facultyIncharge   People? @relation(name: "VenueFacultyIncharge", fields: [facultyInchargeId], references: [id])
 }
 
 enum VenueType {
