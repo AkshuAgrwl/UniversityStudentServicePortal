@@ -1,0 +1,49 @@
+model Staff {
+    id               String          @id
+    name             String
+    email            String          @unique
+    mobile_no        String          @unique
+    designation      DesignationType
+    positions        Position[]      @relation("PositionPerson")
+    venuesAsStaff    Venue[]         @relation("VenueLabStaff")
+    venuesAsIncharge Venue[]         @relation("VenueLabIncharge")
+}
+
+model Position {
+    id    String @id
+    role  String
+    email String @unique
+
+    person_in_position Staff  @relation("PositionPerson", fields: [personInPositionId], references: [id])
+    personInPositionId String
+}
+
+model Venue {
+    id                  String    @id
+    name                String
+    type                VenueType
+    availableForBooking Boolean   @default(true)
+
+    labStaffId    String?
+    labInchargeId String?
+
+    lab_staff    Staff? @relation(name: "VenueLabStaff", fields: [labStaffId], references: [id])
+    lab_incharge Staff? @relation(name: "VenueLabIncharge", fields: [labInchargeId], references: [id])
+}
+
+enum VenueType {
+    LECTURE_HALL
+    SEMINAR_HALL
+    LAB
+}
+
+enum DesignationType {
+    PROFESSOR
+    DISTINGUISHED_PROFESSOR
+    ASSOCIATE_PROFESSOR
+    ASSISTANT_PROFESSOR
+    TECHNICAL_SUPERINTENDENT
+    JR_TECHNICAL_SUPERINTENDENT
+    JR_TECHNICIAN
+    JR_ASSISTANT
+}

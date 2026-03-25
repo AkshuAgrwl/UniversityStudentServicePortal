@@ -7,6 +7,14 @@ model User {
     accounts      Account[]
     sessions      Session[]
 
+    role UserRole @default(DEFAULT)
+
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+}
+
+enum UserRole {
+    DEFAULT
+    ADMIN
+    DEVELOPER
 }
