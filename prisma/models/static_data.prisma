@@ -29,6 +29,8 @@ model Venue {
 
     facultyInchargeId String?
     facultyIncharge   People? @relation(name: "VenueFacultyIncharge", fields: [facultyInchargeId], references: [id])
+
+    bookings Booking[]
 }
 
 enum VenueType {

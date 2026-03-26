@@ -1,0 +1,39 @@
+model Booking {
+    id String @id @default(uuid())
+
+    issuerId String
+    issuer   User   @relation(fields: [issuerId], references: [id])
+
+    accompanyingMembers User[] @relation("BookingAccompaniedMembers")
+
+    venueId String
+    venue   Venue  @relation(fields: [venueId], references: [id])
+
+    fromDate DateTime @db.Date
+    toDate   DateTime @db.Date
+    fromTime Int      @db.UnsignedSmallInt
+    toTime   Int      @db.UnsignedSmallInt
+
+    reason String
+
+    status BookingStatus @default(PENDING)
+    state  BookingState  @default(UNKNOWN)
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+enum BookingStatus {
+    PENDING
+    APPROVED
+    REJECTED
+    CANCELLED
+}
+
+enum BookingState {
+    UNKNOWN
+    ACTIVE
+    FINISHED
+    SUSPENDED_BY_ADMIN
+    SUSPENDED_BY_USER
+}
