@@ -15,9 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MME LNMIIT",
-  description:
-    "Department of Mechanical-Mechatronics Engineering, LNMIIT Jaipur",
+  title: "University Portal",
+  description: "University Portal",
 };
 
 export default function RootLayout({
