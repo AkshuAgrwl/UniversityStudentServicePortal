@@ -38,19 +38,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-          <SidebarGroupLabel>Venue Booking</SidebarGroupLabel>
+          <SidebarGroupLabel>Booking</SidebarGroupLabel>
           <SidebarMenu className="pl-2">
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <Link href="/dashboard/lt-booking">
-                  <span>LT Booking</span>
+                <Link href="/dashboard/bookings/new">
+                  <span>New Booking</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
-                <Link href="/dashboard/lab-booking">
-                  <span>Lab Booking</span>
+                <Link href="/dashboard/bookings/manage">
+                  <span>Manage Bookings</span>
                 </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
