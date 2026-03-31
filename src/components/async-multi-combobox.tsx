@@ -15,6 +15,7 @@ import {
 import { useAsyncSearch } from "@/hooks/use-async-search";
 
 export interface AsyncMultiComboboxProps<T> {
+  id?: string;
   value: T[];
   onChange: (value: T[]) => void;
   itemKey: (item: T) => string;
@@ -28,6 +29,7 @@ export interface AsyncMultiComboboxProps<T> {
 }
 
 export function AsyncMultiCombobox<T>({
+  id,
   value,
   onChange,
   itemKey,
@@ -59,6 +61,7 @@ export function AsyncMultiCombobox<T>({
 
   return (
     <Combobox
+      id={id}
       items={comboboxItems}
       itemToStringValue={itemToString}
       multiple
