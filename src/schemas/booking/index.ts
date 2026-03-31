@@ -1,1 +1,5 @@
-export { CreateBookingSchema, type CreateBookingBody } from "./create.schema";
+export {
+  CreateBookingSchema,
+  type CreateBookingBody,
+  type CreateBookingInput,
+} from "./create.schema";
