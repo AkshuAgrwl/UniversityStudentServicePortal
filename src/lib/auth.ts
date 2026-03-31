@@ -3,7 +3,7 @@ import type { Adapter } from "@auth/core/adapters";
 import NextAuth from "next-auth";
 import { prisma } from "@/lib/prismarc";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { stripUndefined } from "@/lib/utils";
+import { stripUndefined } from "@/utils/object";
 
 import Google from "next-auth/providers/google";
 

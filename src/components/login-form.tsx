@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { GalleryVerticalEnd } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 import {
   Field,
   FieldDescription,

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import MMELogo from "@/assets/logo_partial.png";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils";
 
 const Logo = ({
   className,
