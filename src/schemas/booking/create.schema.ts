@@ -10,7 +10,13 @@ export const CreateBookingSchema = z
     }),
     from_time: u.timeString,
     to_time: u.timeString,
-    accompanying_members: z.array(z.email()).optional(),
+    accompanying_members: z.array(
+      z.object({
+        name: z.string().nullable(),
+        email: z.email(),
+        image: z.url().nullable(),
+      }),
+    ),
     reason: z.string().min(1).max(500),
   })
   .superRefine((d, ctx) => {
@@ -29,7 +35,7 @@ export const CreateBookingSchema = z
       to_date: d.date_range.to,
       from_time: d.from_time,
       to_time: d.to_time,
-      accompanying_members: d.accompanying_members,
+      accompanying_members: d.accompanying_members.map((m) => m.email),
       reason: d.reason,
     };
   });
