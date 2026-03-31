@@ -26,30 +26,24 @@ export function LoginForm({
             <div className="flex size-8 items-center justify-center rounded-md">
               <GalleryVerticalEnd className="size-6" />
             </div>
-            <span className="sr-only">MME LNMIIT</span>
+            <span className="sr-only">Institute</span>
           </Link>
-          <h1 className="text-xl font-bold">
-            Welcome to the Mechanical-Mechatronics Engineering Department,
-            LNMIIT
-          </h1>
+          <h1 className="text-xl font-bold">Welcome to the Institute</h1>
         </div>
 
         <FieldSeparator />
 
         <Field className="grid gap-4 sm:grid-cols-1">
           <LoginButton type="google" redirectTo="/dashboard">
-            Continue with LNMIIT Google Account
+            Continue with Institutional Google Account
           </LoginButton>
         </Field>
         <FieldSeparator />
       </FieldGroup>
       <FieldDescription className="px-6 text-center">
         By clicking continue, you agree to our{" "}
-        <Link href="https://lnmiit.ac.in/terms-conditions/">
-          Terms of Service
-        </Link>{" "}
-        and{" "}
-        <Link href="https://lnmiit.ac.in/privacy-policy/">Privacy Policy</Link>.
+        <Link href="/terms-of-service">Terms of Service</Link> and{" "}
+        <Link href="/privacy-policy">Privacy Policy</Link>.
       </FieldDescription>
     </div>
   );
