@@ -76,7 +76,9 @@ const Navbar = async ({
           <DropdownMenu>
             <DropdownMenuTrigger className="md:hidden" asChild>
               <Button variant="outline" size="icon">
-                <MenuIcon />
+                <span>
+                  <MenuIcon />
+                </span>
                 <span className="sr-only">Menu</span>
               </Button>
             </DropdownMenuTrigger>
